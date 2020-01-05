@@ -1,0 +1,31 @@
+            /********************* TAG SELECTORS ***********************/
+
+h1 {
+  font-size: 100px;
+  color: red;
+}
+
+img:hover {
+  background-color: gold;
+}
+            /******************** CLASS SELECTORS *************************/
+
+.bacon {
+  background-color: red;
+  border-radius: 100px;
+}
+
+.lollipop {
+  background-color: brown;
+  border-radius: 100px;
+}
+
+.pop {
+    height: 160px;
+}
+
+          /******************** ID SELECTORS *****************************/
+
+  #heading {
+    color: purple;
+  } /* Try not to use the id's */

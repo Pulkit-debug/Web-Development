@@ -1,0 +1,31 @@
+  body {
+    background-color: lightcyan;
+  }
+
+hr {
+  /* background-color: yellow; */
+  border-style: none;
+  border-top-style: dotted;
+  border-bottom-style: dashed;
+  border-bottom-width: 5px;
+  border-color: grey;
+  border-top-width: 7px;
+  width: 10%;
+}
+
+img {
+    width: 150px;
+}
+
+h1 {
+  color: blue;
+}
+h3 {
+  color: blue;
+}
+
+img {
+  animation-delay: 3s;
+  background-color: blue;
+  border-radius: 90px;
+}
