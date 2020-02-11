@@ -16,7 +16,7 @@ app.get("/", function(req, res) {
 
 
 
-app.post("/", function(req, res) {  // handling the post request
+app.post("/", function(req, res) {  // handling the post request for home route
   var firstName = req.body.fName;
   var secondName = req.body.lName;
   var email = req.body.mail;
@@ -43,20 +43,28 @@ var jsonData = JSON.stringify(data); // to convert the javaScript data into JSON
       headers: {  // headers is used for http authentication request
         "Authorization": "Pulkit1 ca209d9a392bfa8244013b9ff7fceff7-us4"
       },
-      body: jsonData  // body will be the data to send ;)
+      body: jsonData  // body will be the data to send ;) 
     };
 
     request(options, function(error, response, body) {  // here the body is the data and this request method will act as per the request made / the data submitted.
     // the request will be made t mailchimps servers
     if(error) {
-      console.log(error);
+
+      res.send("There was an error");
+    } else if(response.statusCode === 200){
+      res.sendFile(__dirname + "/success.html");
     } else {
+      res.sendFile(__dirname + "/failure.html");
       console.log(response.statusCode);
     }
   });
 });
 
-app.listen(3000, function() {
+app.post("/failure", function(req, res) {
+  res.redirect("/");
+});
+
+app.listen(process.env.PORT || 3000, function() { // Here process.env.PORT is for Heroku because it will set it's own port not our local port by using ||(or) we can set the port to listen to both the heroku and our local port
   console.log("Server is running on port 3000");
 });
 
