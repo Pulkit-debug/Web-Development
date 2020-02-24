@@ -41,16 +41,16 @@ var jsonData = JSON.stringify(data); // to convert the javaScript data into JSON
       url: "https://us4.api.mailchimp.com/3.0/lists/ae18621f36",
       method: "POST", // Default method is get method so we have to explicitly define that the method is post we are using beccause we need to post the data to mailchimp that the user is putting in it.
       headers: {  // headers is used for http authentication request
-        "Authorization": "Pulkit1 ca209d9a392bfa8244013b9ff7fceff7-us4"
+        "Authorization": "Pulkit1 ba778c084dce63c8a8d02c5a0f3e4ec1-us4"
       },
-      body: jsonData  // body will be the data to send ;) 
+      body: jsonData  // body will be the data to send ;)
     };
 
     request(options, function(error, response, body) {  // here the body is the data and this request method will act as per the request made / the data submitted.
-    // the request will be made t mailchimps servers
+    // the request will be made to mailchimps servers
     if(error) {
-
-      res.send("There was an error");
+      res.sendFile(__dirname + "/failure.html");
+      console.log(response.statusCode);
     } else if(response.statusCode === 200){
       res.sendFile(__dirname + "/success.html");
     } else {
@@ -61,12 +61,14 @@ var jsonData = JSON.stringify(data); // to convert the javaScript data into JSON
 });
 
 app.post("/failure", function(req, res) {
-  res.redirect("/");
+  res.redirect("/");  // redirecting to the home route with a button if the user encounters failure
 });
 
 app.listen(process.env.PORT || 3000, function() { // Here process.env.PORT is for Heroku because it will set it's own port not our local port by using ||(or) we can set the port to listen to both the heroku and our local port
   console.log("Server is running on port 3000");
 });
+
+// to diagonise something in heroku we can alwayse use heroku logs
 
 
 // API:    ca209d9a392bfa8244013b9ff7fceff7-us4

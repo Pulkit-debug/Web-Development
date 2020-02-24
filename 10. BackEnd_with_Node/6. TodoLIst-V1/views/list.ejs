@@ -1,0 +1,39 @@
+<!-- This page will be used as a template we can compute our logic inside our app.js and then pass the data or the into to this file -->
+<!-- Every html code will be valid in this ejs file -->
+
+<!-- The view enjine will always go into this folder named view so the view folder is important to check the ejs file -->
+<!-- The brackets aroudn var kindOfDay is the format for declaring the var which we will transfer from our app.js
+
+  fyi these are called markers
+-->
+
+<!-- we have another type of tag for running the javaScript code into our html file which is called scriplet Tag and
+  is used something like this <% %>
+
+this tag only allows some basic javaScript to run on the content side like loops, ifelse statememts basically for control-flow
+
+and is we have to use this we have to place these tags around every single line of javaScript code
+ -->
+
+<%- include("header") -%>
+<div class="box" id="heading">
+  <h1><%= listTitle %> </h1>
+</div>
+
+<div class="box">
+  <%  for (var i = 0;i<newListItem.length;i++) {  %>
+  <div class="item">
+    <input type="checkbox">
+    <p> <%= newListItem[i] %></p>
+  </div>
+
+  <% } %>
+
+  <form class="item" action="/" method="post">
+    <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+    <button type="submit" name="submit" value="<%= listTitle %>">+</button>
+  </form>
+
+</div>
+
+<%- include("footer") -%>
